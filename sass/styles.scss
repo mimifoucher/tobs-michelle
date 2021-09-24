@@ -1,0 +1,533 @@
+//Import de estilo/fuente de letra
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;500;700&display=swap');
+
+//Color Variables
+$white:rgb(253, 253, 253);
+$green:rgb(47, 194, 125);
+$violet:rgb(77, 87, 221);
+$grey-shadow: rgb(97, 96, 96);
+$color-button:rgb(224, 251, 237);
+
+//Mixin Windows Bulding - Plan Icon Business
+@mixin window ($background-color:rgb(47, 194, 125),$width:3px,$height:3px) {
+  background-color: $background-color;
+  width: $width;
+  height: $height;
+}
+
+//Mixin Flexbox
+
+@mixin flexbox ($display:flex, $align-items:center,$justify-content:center) {
+  display: $display;
+  align-items: $align-items;
+  justify-content: $justify-content;
+}
+
+
+//MOBILE VIEW
+@media screen and (min-width: 240px) {
+  //BODY - MOBILE
+  .body {
+    background-color: $violet;
+    flex-direction: column;
+    @include flexbox;
+  }
+
+  .box-container {
+    flex-direction: column;
+    @include flexbox;
+  }
+
+  //Title:Princing Togle 1
+  .title {
+    font-size: 1.8em;
+    margin-bottom: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: $white;
+    //Line under the title
+    &-line {
+      width: 40px;
+      height: 3px;
+      background-color: $green;
+      margin: 5px 0 15px 0;
+    }
+  }
+  //Button Container (Monthly-Annualy) 
+  .button-container {
+    background-color: $white;
+    width: 200px;
+    height: 50px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 1px 1px 4px 1px $grey-shadow;
+
+    //Buttons "Monthly" and "Annualy"
+    &__monthly,
+    &__annualy {
+      width: 90px;
+      height: 40px;
+      border-radius: 20px;
+      color: $green;
+      background-color: $color-button;
+      border-style: none;
+      cursor: pointer;
+      font-family:'Poppins', sans-serif;
+      font-weight: 500;
+      font-size: 0.8em;
+    }
+  }
+  //Cards (Basic,Premium, Business)
+  .card {
+    background-color: $white;
+    width: 250px;
+    height: 370px;
+    margin: 15px 0 15px 0;
+    border-radius: 20px;
+    flex-direction: column;
+    box-shadow: 1px 1px 4px 1px $grey-shadow;
+    @include flexbox;
+    &-plan {
+      flex-direction: column;
+      @include flexbox;
+      &__name {
+        font-family: 'Poppins', sans-serif;
+        margin-bottom: 0;
+        font-size: 1.2em;
+      }
+    }
+
+    //Icons
+    &-icon {
+      width: 80px;
+      height: 80px;
+      background-color: $green;
+      border-radius: 50%;
+      @include flexbox;
+
+      //Icon Plan Basic - Pie Chart
+      &__pie {
+        width: 50px;
+        height: 50px;
+        fill: $white;
+      }
+    }
+
+    //Icon 2 Plan Premium
+    &-grafic {
+      position: relative;
+      //Vertical Line
+      &::after {
+        content: "";
+        position: absolute;
+        width: 4px;
+        height: 30px;
+        background-color: $white;
+        left: -20px;
+        bottom: -15px;
+      }
+      //Horizontal Line
+      &::before {
+        content: "";
+        position: absolute;
+        width: 45px;
+        height: 4px;
+        background-color: $white;
+        top: 15px;
+        left: -20px;
+      }
+      //First line arrow (up)
+      &__lines::before {
+        content: "";
+        position: absolute;
+        width: 15px;
+        height: 4px;
+        background-color: $white;
+        top: 45%;
+        left: -15px;
+        transform: rotate(135deg);
+      }
+      //Second line arrow (down)
+      &__lines::after {
+        content: "";
+        position: absolute;
+        width: 18px;
+        height: 4px;
+        background-color: $white;
+        top: 45%;
+        left: -6px;
+        transform: rotate(225deg);
+      }
+      //Third line arrow (up)
+      &__line3 {
+        position: absolute;
+        width: 18px;
+        height: 4px;
+        background-color: $white;
+        top: 45%;
+        left: 4px;
+        transform: rotate(130deg);
+      }
+      //Arrow
+      &__arrow {
+        height: 0;
+        width: 0;
+        position: absolute;
+        border-right: 8px solid transparent;
+        border-left: 8px solid transparent;
+        border-bottom: 10px solid $white;
+        left: 13px;
+        bottom: 2px;
+        transform: rotate(43deg);
+      }
+    }
+
+    //Icon 3 Plan Business
+
+    //Bulding Box 1
+    &-bulding {
+      position: relative;
+      width: 18px;
+      height: 30px;
+      background-color: $white;
+      left: 2%;
+      top: 11%;
+      //Fireplace 1
+      &::before {
+        content: "";
+        position: absolute;
+        width: 3px;
+        height: 8px;
+        background-color: $white;
+        left: 3px;
+        top: -8px;
+      }
+      //Fireplace 2
+      &::after {
+        content: "";
+        position: absolute;
+        width: 3px;
+        height: 8px;
+        background-color: $white;
+        left: 10px;
+        top: -8px;
+      }
+      //Window 1 - Bulding 1
+      &__window {
+        left: 14%;
+        top: 20%;
+        position: absolute;
+        @include window;
+        //Window 2 - Bulding 1
+        &::before {
+          content: "";
+          position: absolute;
+          right: -6px;
+          @include window;
+        }
+        //Window 3 - Bulding 1
+        &::after {
+          content: "";
+          position: absolute;
+          left: 14%;
+          top: 150%;
+          @include window;
+        }
+      }
+      //Window 4 - Bulding 1
+      &__window1 {
+        left: 48%;
+        top: 37%;
+        position: absolute;
+        @include window;
+        //Window 5 - Bulding 1
+        &::before {
+          content: "";
+          position: absolute;
+          left: -195%;
+          top: 145%;
+          @include window;
+        }
+        //Window 6 - Bulding 1
+        &::after {
+          content: "";
+          position: absolute;
+          right: -25%;
+          top: 145%;
+          @include window;
+        }
+      }
+    }
+    //Bulding Box 2
+    &-bulding1 {
+      position: relative;
+      width: 12px;
+      height: 39px;
+      background-color: $white;
+      left: -0px;
+      top: 6%;
+      //Window 1 - Bulding 2
+      &::before {
+        content: "";
+        position: absolute;
+        left: 35%;
+        top: 13%;
+        @include window;
+      }
+      //Window 2 - Bulding 2
+      &::after {
+        content: "";
+        position: absolute;
+        left: 35%;
+        top: 27%;
+        @include window;
+      }
+      //Window 3 - Bulding 2
+      &__window {
+        position: absolute;
+        left: 35%;
+        top: 42%;
+        @include window;
+      }
+    }
+
+    //Bulding Box 3
+    &-bulding2 {
+      position: relative;
+      width: 12px;
+      height: 23px;
+      background-color: $white;
+      left: 0px;
+      top: 16%;
+      //Window 1 - Bulding 3
+      &::before {
+        content: "";
+        position: absolute;
+        left: 30%;
+        top: 48%;
+        @include window;
+      }
+      //Window 2 - Bulding 3
+      &::after {
+        content: "";
+        position: absolute;
+        left: 30%;
+        top: 20%;
+        @include window;
+      }
+    }
+
+    //Monthly Plan Price 
+    &-price {
+      display: inline-flex;
+      margin-top: 10px;
+      font-family: 'Poppins', sans-serif;
+      &__value {
+        font-size: 1.8em;
+        margin: 0;
+        
+        font-weight: 700;
+      }
+      &__suscription {
+        font-size: 0.8em;
+        margin-bottom: 0px;
+      }
+    }
+
+    //Card List
+    &-list {
+      list-style: none;
+      padding: 0;
+      font-family:'Poppins', sans-serif;
+      font-weight: 400;
+      font-size: 0.8em;
+      flex-direction: column;
+      line-height: 1.6em;
+      @include flexbox;
+    }
+
+    //Buttons "Sign in"
+    &-button {
+      width: 160px;
+      height: 35px;
+      background-color: $green;
+      color: $white;
+      border-radius: 20px;
+      border-style: none;
+      cursor: pointer;
+      font-family:'Poppins', sans-serif;
+    }
+  }
+
+  //Buttons (selected - deselected)
+  .button-choosed {
+    background-color: $green;
+    color: $white;
+    }
+
+    .button-unchoosed {
+      color: $green;
+      background-color: $color-button;
+    }
+  }
+  
+
+// TABLET VIEW
+@media screen and (min-width: 600px) {
+  //BODY - Tablet
+  .body {
+    margin: 30px 0 30px 0;
+  }
+
+  //White Container Box
+  .box-container {
+    width: 550px;
+    height: 100%;
+    background-color: $white;
+    border-radius: 15px;
+    box-shadow: 1px 1px 4px 1px $grey-shadow;
+  }
+  //Button Container
+  .button-container {
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.8s ease;
+    &:hover {
+        box-shadow: 1px 2px 4px 1px $color-button;
+      }
+    
+  }
+
+  .title {
+    color: black;
+  }
+
+  //Cards (Basic,Premium, Business)
+  .card {
+    width: 400px;
+    height: 200px;
+    margin: 15px 0 15px 0;
+    flex-direction: row;
+    box-shadow: 1px 1px 4px 1px $grey-shadow;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.8s ease;
+
+    &:hover {
+      box-shadow: 2px 2px 5px 2px $green;
+    }
+
+
+    //Box Container Cards
+    &-container {
+      display: flex;
+      flex-direction: column;
+      margin: 0 20px 0 20px 0;
+    }
+    //Type of Plan - (Name)
+    &-plan {
+      flex-direction: row;
+      &__name {
+        position: absolute;
+        margin: 0;
+        top: 10px;
+      }
+    }
+    //Icons
+    &-icon {
+      position: absolute;
+      left: 45px;
+      top: 20px;
+    }
+    //Plan Price
+    &-price {
+      position: absolute;
+      top: 95px;
+      left: 30px;
+    }
+    //Buttons "Sign In"
+    &-button {
+      position: absolute;
+      bottom: 10px;
+      overflow: hidden;
+      transition: all 0.8s ease;
+      &:hover {
+        background-color: $white;
+        color: $green;
+        border: 1px solid $green;
+      }
+    }
+
+    //Plan List
+    &-list {
+      position: absolute;
+      right: 30px;
+      bottom: 50px;
+    }
+  }
+}
+
+//DESKTOP VIEW
+
+@media screen and (min-width: 1024px) {
+  //BODY - Desktop
+  .body {
+    flex-direction: row;
+    margin: 50px 10px 50px 10px;
+  }
+
+  //White Container Box
+  .box-container {
+    width: 1200px;
+    height: 100%;
+    margin-top: 30px;
+  }
+
+  //Cards (Basic,Premium, Business)
+  .card {
+    width: 250px;
+    height: 400px;
+    margin: 15px;
+    flex-direction: column;
+
+    //Box Container Cards
+    &-container {
+      flex-direction: row;
+      margin: 30px 0 30px 0;
+      @include flexbox;
+    }
+
+    &-plan {
+      align-items: center;
+      justify-content: center;
+      position: initial;
+    }
+    //Cards Icons
+    &-icon {
+      position: initial;
+    }
+
+    //Monthly Plan Price
+    &-price {
+      display: inline-flex;
+      margin-top: 10px;
+      position: initial;
+      align-items: center;
+      justify-content: center;
+
+    }
+
+    //Card List
+    &-list {
+      position: initial;
+      padding-top: 25px;
+      margin: 0;
+      line-height: 2em;
+    }
+  }
+
+}
